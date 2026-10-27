@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Download Router - Settings & Rules</title>
+  <link rel="stylesheet" href="options.css">
+</head>
+<body>
+  <div class="layout-container">
+    <!-- Sidebar / Navigation -->
+    <aside class="sidebar">
+      <div class="brand-block">
+        <img src="../icons/icon-48.png" alt="Logo" class="brand-logo">
+        <div>
+          <h2>Download Router</h2>
+          <span class="version-badge">v1.0.0</span>
+        </div>
+      </div>
+
+      <nav class="nav-menu">
+        <a href="#rules-section" class="nav-item active" data-target="rules-section">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h7"/></svg>
+          Domain Rules
+        </a>
+        <a href="#memory-section" class="nav-item" data-target="memory-section">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+          Remembered Locations
+        </a>
+        <a href="#preferences-section" class="nav-item" data-target="preferences-section">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+          General Settings
+        </a>
+        <a href="#drives-section" class="nav-item" data-target="drives-section">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"/><rect x="2" y="14" width="20" height="8" rx="2" ry="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
+          D: & Custom Drives
+        </a>
+        <a href="#tester-section" class="nav-item" data-target="tester-section">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+          Rule Tester
+        </a>
+        <a href="#backup-section" class="nav-item" data-target="backup-section">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Backup & Export
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <span class="note-text">Files save into your default browser Downloads directory.</span>
+      </div>
+    </aside>
+
+    <!-- Main Content Panels -->
+    <main class="content-pane">
+      
+      <!-- Section 1: Domain Rules -->
+      <section id="rules-section" class="panel-section active">
+        <div class="section-header">
+          <div>
+            <h2>Domain Routing Rules</h2>
+            <p class="section-desc">Create custom patterns to automatically direct files from specific websites into designated subfolders.</p>
+          </div>
+          <button id="addRuleBtn" class="btn btn-primary">+ Add New Rule</button>
+        </div>
+
+        <div class="card table-card">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th style="width: 35%">Domain / URL Pattern</th>
+                <th style="width: 35%">Target Subfolder</th>
+                <th style="width: 15%">Status</th>
+                <th style="width: 15%; text-align: right;">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="rulesTableBody">
+              <!-- Dynamically populated -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Section 2: Remembered Locations -->
+      <section id="memory-section" class="panel-section">
+        <div class="section-header">
+          <div>
+            <h2>Remembered Domain Locations</h2>
+            <p class="section-desc">The extension automatically remembers the last folder you used or set for each domain origin.</p>
+          </div>
+          <button id="clearAllMemoryBtn" class="btn btn-danger-outline">Clear All</button>
+        </div>
+
+        <div class="card table-card">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th style="width: 45%">Domain Origin</th>
+                <th style="width: 40%">Last Saved Subfolder</th>
+                <th style="width: 15%; text-align: right;">Action</th>
+              </tr>
+            </thead>
+            <tbody id="memoryTableBody">
+              <!-- Dynamically populated -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Section 3: General Settings -->
+      <section id="preferences-section" class="panel-section">
+        <div class="section-header">
+          <div>
+            <h2>General Settings</h2>
+            <p class="section-desc">Configure overall download behavior, conflict handling, and automated organization.</p>
+          </div>
+          <button id="savePreferencesBtn" class="btn btn-primary">Save Settings</button>
+        </div>
+
+        <div class="settings-grid">
+          <div class="card setting-card">
+            <div class="setting-info">
+              <h3>Browser Download Location (Base Path)</h3>
+              <p>Your browser's download root directory (e.g. <code>C:\Users\KBSV</code>). Folders like <code>costume</code> or <code>Downloads/Amazon</code> resolve relative to this path.</p>
+            </div>
+            <input type="text" id="settingBaseLocation" class="custom-input" placeholder="e.g. C:\Users\KBSV">
+          </div>
+
+          <div class="card setting-card">
+            <div class="setting-info">
+              <h3>Enable Smart Routing</h3>
+              <p>Turn download intercepting and auto-routing on or off globally.</p>
+            </div>
+            <label class="switch">
+              <input type="checkbox" id="settingGlobalEnabled">
+              <span class="slider round"></span>
+            </label>
+          </div>
+
+          <div class="card setting-card">
+            <div class="setting-info">
+              <h3>Always Open "Save As" Dialog (Manual Rename Mode)</h3>
+              <p>Forces the native Windows "Save As" dialog to pop up already inside your target folder with the filename highlighted so you can rename it before saving.</p>
+            </div>
+            <label class="switch">
+              <input type="checkbox" id="settingAlwaysPromptSaveAs" checked>
+              <span class="slider round"></span>
+            </label>
+          </div>
+
+          <div class="card setting-card">
+            <div class="setting-info">
+              <h3>Remember Last Used Folder per Domain</h3>
+              <p>When you download or assign a folder for amazon.com, future downloads from amazon.com automatically use it.</p>
+            </div>
+            <label class="switch">
+              <input type="checkbox" id="settingRememberLocation">
+              <span class="slider round"></span>
+            </label>
+          </div>
+
+          <div class="card setting-card">
+            <div class="setting-info">
+              <h3>Smart Auto-Folder for New Sites</h3>
+              <p>Automatically create a clean subfolder from the site's brand name (e.g. <code>archive.org</code> &rarr; <code>Archive</code>) if no custom rule matches.</p>
+            </div>
+            <label class="switch">
+              <input type="checkbox" id="settingAutoDomainFolder">
+              <span class="slider round"></span>
+            </label>
+          </div>
+
+          <div class="card setting-card">
+            <div class="setting-info">
+              <h3>File Conflict Action</h3>
+              <p>Choose what happens if a file with the same name already exists in the destination folder.</p>
+            </div>
+            <select id="settingConflictAction" class="custom-select">
+              <option value="uniquify">Auto-rename (file (1).ext) - Recommended</option>
+              <option value="prompt">Always prompt with file dialog</option>
+              <option value="overwrite">Overwrite existing file</option>
+            </select>
+          </div>
+
+          <div class="card setting-card">
+            <div class="setting-info">
+              <h3>Default Subfolder Fallback</h3>
+              <p>Subfolder used when no domain rules or website matches exist. Leave blank to save directly in Downloads root.</p>
+            </div>
+            <input type="text" id="settingDefaultFolder" class="custom-input" placeholder="e.g. General or Misc">
+          </div>
+
+          <div class="card setting-card">
+            <div class="setting-info">
+              <h3>Download Indicator Badge</h3>
+              <p>Briefly displays a blue checkmark badge on the extension icon when a file is successfully routed.</p>
+            </div>
+            <label class="switch">
+              <input type="checkbox" id="settingShowBadge">
+              <span class="slider round"></span>
+            </label>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section: D: & Custom Drives Helper -->
+      <section id="drives-section" class="panel-section">
+        <div class="section-header">
+          <div>
+            <h2>Routing to D:\ Drive or /user/ Custom Folders</h2>
+            <p class="section-desc">By browser security design, Chromium (Chrome & Edge) locks all extension downloads inside the Downloads directory. Use native Windows Directory Junctions (folder aliases) to seamlessly direct downloads anywhere on your PC.</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="setting-info" style="margin-bottom: 16px;">
+            <h3 style="margin-bottom: 6px; font-size: 16px;">How It Works: Windows Junctions</h3>
+            <p style="font-size: 13px; line-height: 1.6; color: var(--text-muted);">
+              A <strong>Directory Junction</strong> acts like a high-speed portal inside your Downloads folder. When you create a junction called <code>Costume</code> or <code>DriveD</code>, anything Chrome saves into <code>Downloads/Costume/</code> or <code>Downloads/DriveD/</code> is <strong>physically stored on <code>C:\user\costume</code> or <code>D:\</code></strong> without duplicating space or violating browser store sandboxes!
+            </p>
+          </div>
+
+          <div class="junction-generator-box" style="background: #0f172a; padding: 18px; border-radius: var(--radius); border: 1px solid var(--border-color);">
+            <h4 style="font-size: 14px; margin-bottom: 12px; color: var(--text-main);">1-Click Command Generator</h4>
+            <div class="form-row" style="margin-bottom: 14px;">
+              <div class="form-group flex-2">
+                <label>Target Destination on your PC (e.g. D:\ or C:\user\costume):</label>
+                <input type="text" id="junctionTargetInput" class="custom-input" value="D:\" placeholder="e.g. D:\ or C:\user\costume" style="width: 100%;">
+              </div>
+              <div class="form-group flex-1">
+                <label>Folder Alias Name:</label>
+                <input type="text" id="junctionAliasInput" class="custom-input" value="DriveD" placeholder="e.g. DriveD or Costume" style="width: 100%;">
+              </div>
+            </div>
+
+            <div class="command-output-box" style="display: flex; flex-direction: column; gap: 8px;">
+              <label style="font-size: 12px; font-weight: 600; color: var(--text-muted);">Run this 1 command in PowerShell or Command Prompt:</label>
+              <div style="display: flex; gap: 10px; align-items: center;">
+                <code id="junctionCommandOutput" style="flex: 1; background: #060911; padding: 10px 14px; border-radius: 6px; border: 1px solid var(--border-color); color: #38bdf8; font-family: ui-monospace, monospace; font-size: 12px; word-break: break-all;">
+                  New-Item -ItemType Junction -Path "$HOME\Downloads\DriveD" -Target "D:\"
+                </code>
+                <button id="copyJunctionBtn" class="btn btn-primary" style="white-space: nowrap;">Copy Command</button>
+              </div>
+            </div>
+
+            <div style="margin-top: 14px; display: flex; gap: 10px; align-items: center;">
+              <button id="createRuleFromAliasBtn" class="btn btn-secondary">
+                Create Rule Using This Folder Alias
+              </button>
+              <span id="junctionFeedback" style="font-size: 12px; color: var(--success);"></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3 style="font-size: 15px; margin-bottom: 8px;">Alternative: Change Master Download Folder in Browser Settings</h3>
+          <p style="font-size: 13px; color: var(--text-muted); line-height: 1.6; margin-bottom: 12px;">
+            You can also change your browser's primary download location from <code>C:\Users\KBSV\Downloads</code> to <code>D:\</code> directly:
+          </p>
+          <ul style="padding-left: 20px; font-size: 13px; color: var(--text-muted); display: flex; flex-direction: column; gap: 6px;">
+            <li>In <strong>Microsoft Edge</strong>: Open <code>edge://settings/downloads</code> &rarr; click <strong>Change</strong> under "Location" &rarr; select <code>D:\</code>.</li>
+            <li>In <strong>Google Chrome</strong>: Open <code>chrome://settings/downloads</code> &rarr; click <strong>Change</strong> under "Location" &rarr; select <code>D:\</code>.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Section 4: Rule Tester -->
+      <section id="tester-section" class="panel-section">
+        <div class="section-header">
+          <div>
+            <h2>Interactive Rule Tester</h2>
+            <p class="section-desc">Simulate a download from any URL to inspect how the extension extracts domains and determines destination paths.</p>
+          </div>
+        </div>
+
+        <div class="card test-box">
+          <div class="form-row">
+            <div class="form-group flex-2">
+              <label>Source Page or Download URL:</label>
+              <input type="text" id="testUrlInput" class="custom-input" value="https://www.amazon.com/gp/product/B09ABCDE" placeholder="https://example.com/...">
+            </div>
+            <div class="form-group flex-1">
+              <label>Filename:</label>
+              <input type="text" id="testFilenameInput" class="custom-input" value="design_principles.pdf">
+            </div>
+            <button id="runTestBtn" class="btn btn-primary" style="align-self: flex-end; margin-bottom: 2px;">Test Path</button>
+          </div>
+
+          <div class="test-result-box" id="testResultBox">
+            <div class="result-row">
+              <span class="result-label">Source Domain:</span>
+              <span id="testResultDomain" class="result-val">-</span>
+            </div>
+            <div class="result-row">
+              <span class="result-label">Detected Brand:</span>
+              <span id="testResultBrand" class="result-val">-</span>
+            </div>
+            <div class="result-row">
+              <span class="result-label">Rule / Reason:</span>
+              <span id="testResultReason" class="result-val">-</span>
+            </div>
+            <div class="result-row highlight-row">
+              <span class="result-label">Destination Subfolder:</span>
+              <span id="testResultFolder" class="result-val code-val">Downloads/</span>
+            </div>
+            <div class="result-row highlight-row">
+              <span class="result-label">Full Target File Path:</span>
+              <span id="testResultFull" class="result-val code-val">-</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 5: Backup & Export -->
+      <section id="backup-section" class="panel-section">
+        <div class="section-header">
+          <div>
+            <h2>Backup & Data Management</h2>
+            <p class="section-desc">Export your custom rules and domain mappings to JSON, or restore them across browsers.</p>
+          </div>
+        </div>
+
+        <div class="backup-grid">
+          <div class="card backup-card">
+            <h3>Export Configuration</h3>
+            <p>Save all your rules, preferences, and remembered locations to a standalone JSON file.</p>
+            <button id="exportBtn" class="btn btn-secondary">Export JSON Backup</button>
+          </div>
+
+          <div class="card backup-card">
+            <h3>Import Configuration</h3>
+            <p>Load rules and settings from an existing JSON backup file.</p>
+            <input type="file" id="importFileInput" accept=".json" style="display: none;">
+            <button id="importBtn" class="btn btn-secondary">Import from JSON</button>
+          </div>
+
+          <div class="card backup-card danger-card">
+            <h3>Reset to Factory Defaults</h3>
+            <p>Erase all custom domain rules and history, reverting to default initial rules.</p>
+            <button id="resetDefaultsBtn" class="btn btn-danger-outline">Reset All to Defaults</button>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- Rule Edit Modal -->
+  <div id="ruleModal" class="modal-backdrop">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3 id="modalTitle">Add Domain Rule</h3>
+        <button id="closeModalBtn" class="close-btn">&times;</button>
+      </div>
+      <div class="modal-body">
+        <input type="hidden" id="editRuleId">
+        <div class="form-group">
+          <label>Website Domain or Wildcard Pattern:</label>
+          <input type="text" id="modalPatternInput" class="custom-input" placeholder="e.g. *amazon.* or archive.org">
+          <span class="help-text">Use <code>*</code> as a wildcard. Examples: <code>*amazon.*</code>, <code>*.archive.org</code>, <code>github.com</code></span>
+        </div>
+
+        <div class="form-group">
+          <label>Target Subfolder Path:</label>
+          <div class="input-prefix-box">
+            <span id="modalBasePrefix">C:\Users\KBSV\</span>
+            <input type="text" id="modalFolderInput" class="custom-input" placeholder="e.g. costume or Downloads/Amazon">
+          </div>
+          <span class="help-text">Can be any folder relative to your Edge location (e.g. <code>costume</code> or <code>Downloads/Amazon</code>).</span>
+        </div>
+
+        <div class="token-chips">
+          <span class="tokens-label">Quick Tokens:</span>
+          <button type="button" class="token-chip" data-token="{brand}">{brand}</button>
+          <button type="button" class="token-chip" data-token="{domain}">{domain}</button>
+          <button type="button" class="token-chip" data-token="{year}">{year}</button>
+          <button type="button" class="token-chip" data-token="{year}/{month}">{year}/{month}</button>
+          <button type="button" class="token-chip" data-token="{ext}">{ext}</button>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button id="cancelModalBtn" class="btn btn-secondary">Cancel</button>
+        <button id="saveRuleModalBtn" class="btn btn-primary">Save Rule</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="toastNotification" class="toast"></div>
+
+  <script src="../shared/utils.js"></script>
+  <script src="options.js"></script>
+</body>
+</html>

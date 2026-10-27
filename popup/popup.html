@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Download Router</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="popup-container">
+    <!-- Header -->
+    <header class="popup-header">
+      <div class="brand">
+        <img src="../icons/icon-32.png" alt="Logo" class="logo">
+        <div>
+          <h1 class="title">Download Router</h1>
+          <span class="subtitle">Domain & Folder Memory</span>
+        </div>
+      </div>
+      <div class="header-actions">
+        <label class="switch" title="Toggle Download Router">
+          <input type="checkbox" id="masterToggle" checked>
+          <span class="slider round"></span>
+        </label>
+        <button id="openOptionsBtn" class="icon-btn" title="Open Full Settings">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="3"></circle>
+            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- Current Site Card -->
+    <section class="card current-site-card">
+      <div class="card-title-row">
+        <span class="card-label">CURRENT WEBSITE</span>
+        <span id="currentDomainBadge" class="domain-pill">Detecting...</span>
+      </div>
+
+      <div class="folder-input-group">
+        <label for="currentFolderInput" class="input-label">Save Downloads To (relative to Edge location):</label>
+        <div class="input-wrapper">
+          <input type="text" id="currentFolderInput" placeholder="e.g. costume or Downloads/Amazon" autocomplete="off" spellcheck="false">
+          <button id="saveFolderBtn" class="btn btn-primary btn-sm">Set</button>
+        </div>
+      </div>
+
+      <div id="saveFeedback" class="feedback-msg"></div>
+
+      <div class="path-preview">
+        <span class="preview-label">Full path preview:</span>
+        <code id="destinationPreview">C:\Users\KBSV\...</code>
+      </div>
+    </section>
+
+    <!-- Quick Preferences -->
+    <section class="quick-prefs">
+      <label class="pref-row">
+        <span>Remember last location per domain</span>
+        <input type="checkbox" id="prefRememberLocation">
+      </label>
+      <label class="pref-row">
+        <span>Auto-create domain folder if unlisted</span>
+        <input type="checkbox" id="prefAutoDomainFolder">
+      </label>
+    </section>
+
+    <!-- Recent Downloads Feed -->
+    <section class="card recent-card">
+      <div class="card-title-row">
+        <span class="card-label">RECENT DOWNLOADS</span>
+        <button id="clearRecentBtn" class="text-btn">Clear</button>
+      </div>
+      <div id="recentList" class="recent-list">
+        <div class="empty-state">No downloads recorded yet.</div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="popup-footer">
+      <button id="manageRulesBtn" class="btn btn-secondary btn-block">
+        Open Full Rules & Settings Manager
+      </button>
+    </footer>
+  </div>
+
+  <script src="../shared/utils.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>
